@@ -17,6 +17,9 @@ def random_pk():
 
 def random_word():
     words = [line.strip() for line in open('words.txt') if len(line) > 10]
+    # words = [line.strip() for line in open('custom_words.txt) if len(line) > 10]
+    #return random.choice(words).upper()
+
     return random.choice(words).upper()
 
 class Game(db.Model):
