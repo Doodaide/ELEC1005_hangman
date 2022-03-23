@@ -11,15 +11,23 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hangman.db'
 db = SQLAlchemy(app)
 
 # Model
+categories = ["food","animals","culture"]
+print("Choose a category:")
+for cat in categories:
+    print(cat,end='\n')
+category = input().lower().strip()
+while category not in categories:
+    print("Choose a category:")
+    for cat in categories:
+        print(cat, end='\n')
+    category = input().lower().strip()
 
+word_file = category+".txt"
 def random_pk():
     return random.randint(1e9, 1e10)
 
 def random_word():
-    words = [line.strip() for line in open('words.txt') if len(line) > 10]
-    # words = [line.strip() for line in open('custom_words.txt) if len(line) > 10]
-    #return random.choice(words).upper()
-
+    words = [line.strip() for line in open(word_file) if len(line) > 10]
     return random.choice(words).upper()
 
 class Game(db.Model):
@@ -101,5 +109,5 @@ def play(game_id):
 # Main
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0',port=8910, debug=False)
 
