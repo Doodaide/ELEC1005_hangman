@@ -80,7 +80,6 @@ Slowpoke
 Slowbro
 Magnemite
 Magneton
-Farfetch’d
 Doduo
 Dodrio
 Seel
@@ -119,7 +118,6 @@ Goldeen
 Seaking
 Staryu
 Starmie
-Mr. Mime
 Scyther
 Jynx
 Electabuzz
