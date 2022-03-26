@@ -1,5 +1,5 @@
 import random
-
+import time
 import flask
 from flask_sqlalchemy import SQLAlchemy
 
@@ -11,16 +11,74 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hangman.db'
 db = SQLAlchemy(app)
 
 # Model
-categories = ["food","animals","culture"]
-print("Choose a category:")
+
+#A list of categories that the user can choose from standard input.
+#Currently, categories are: animals, countries, food, pokemon, pop_culture. 
+
+categories = ["food","animals","pop-culture", "pokemon", "countries"] #added the rest of the categories
+
+#I think adding a set of automated messages the would add to user interaction. I'll let someone else think of more. 
+#If this is changed, we must change the selection range.
+
+messages = ["A wise choice for a foolish soul", "Can't say I'm an expert, but I'll let you do the talking"]
+
+selection = random.randint(0,1) 
+
+#initial greeting message
+
+print("Hello User")
+time.sleep(1)
+print("I hope you are well.")
+time.sleep(1)
+print("Unfortunately, our prisoner is not")
+time.sleep(1)
+print("It is time to test your knowledge.")
+time.sleep(0.8)
+print("Choose a category you are confident in")
+time.sleep(0.8)
+print("Confident enough that you'd gamble a life")
+time.sleep(0.8)
+print("Or, type random if you wish to be surprised")
+time.sleep(0.8)
+print("Hope you are ready :)")
+time.sleep(0.8)
+print()
+
+#formatted category display to look better 
 for cat in categories:
-    print(cat,end='\n')
-category = input().lower().strip()
+    print("-", cat.capitalize(),end='\n')
+print()
+category = input("Choice: ").lower().strip() #added choice mesage 
+
+#if the category is a valid category in the list, print a selected message, then proceed
+if category in categories:
+    print(messages[selection])
+
+#If the user selects random, the code will select a random category of the 5, then print a message saying 
+#Looks like we'll use <category name> today, and another message before the game starts
+elif category == "random":
+    random_index = random.randint(0,4)
+    category = categories[random_index] 
+    print(f"Looks like we'll use {categories[random_index]} today")
+    print(messages[selection])
+
 while category not in categories:
-    print("Choose a category:")
+    print()
+    print("Please choose a legit category:")
+    print()
     for cat in categories:
-        print(cat, end='\n')
-    category = input().lower().strip()
+        print("-", cat.capitalize(),end='\n')
+
+    print()
+    category = input("Choice: ").lower().strip()
+    if category in categories:
+        print(messages[selection])
+    if category == "random":
+        random_index = random.randint(0,4)
+        category = categories[random_index] 
+        print(f"Looks like we'll use {categories[random_index]} today")
+        print(messages[selection])
+
 
 word_file = category+".txt"
 def random_pk():
