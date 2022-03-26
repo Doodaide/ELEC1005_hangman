@@ -62,6 +62,8 @@ elif category == "random":
     print(f"Looks like we'll use {categories[random_index]} today")
     print(messages[selection])
 
+#This block of code will loop the "ask user for selection" menu 
+#until the user enters in a proper category
 while category not in categories:
     print()
     print("Please choose a legit category:")
@@ -81,6 +83,7 @@ while category not in categories:
 
 
 word_file = category+".txt"
+
 def random_pk():
     return random.randint(1e9, 1e10)
 
