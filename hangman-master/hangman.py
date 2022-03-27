@@ -20,7 +20,8 @@ categories = ["food","animals","pop-culture", "pokemon", "countries"] #added the
 #I think adding a set of automated messages the would add to user interaction. I'll let someone else think of more. 
 #If this is changed, we must change the selection range.
 
-messages = ["A wise choice for a foolish soul", "Can't say I'm an expert, but I'll let you do the talking"]
+messages = ["A wise choice for a foolish soul", "Can't say I'm an expert, but I'll let you do the talking", "Wow, daring today aren't we",\
+"if ony you were that confident with your other life choices", "I'll drink to that"]
 
 selection = random.randint(0,1) 
 
@@ -170,5 +171,5 @@ def play(game_id):
 # Main
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=8910, debug=False)
+    app.run(host='0.0.0.0',port=8910, debug=False) #remember to modify the host, port and debug mode. 
 
