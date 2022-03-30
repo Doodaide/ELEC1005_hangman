@@ -120,7 +120,7 @@ class Game(db.Model):
     
 # Music
 def playmusic():
-    filepath = r"/home/elec1005/ELEC1005_hangman-main/AC／DC - Back In Black.mp3"
+    filepath = "Back_In_Black.mp3"
     pygame.mixer.init()
     pygame.mixer.music.load(filepath)
     pygame.mixer.music.play()
