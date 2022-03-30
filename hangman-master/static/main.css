@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@1,500&display=swap');
+
+
+/* background */
+body {
+  background-color: white;
+}
+
+.btn.btn-primary.btn-lg {
+  height:45px;
+}
 
 th {
   text-align: center
@@ -11,8 +22,28 @@ th {
   letter-spacing: 15px;
 }
 
-/* Drawing */
+/* changing text for the header (hangman game) */
+.container h1 {
+  /* font-family: 'Cabin', sans-serif; */
+  color:rgb(30,30,30);
+}
 
+/* styling of buttons */
+.btn.btn-primary,
+.btn.btn-default {
+  font-family: 'Cabin', sans-serif;
+  color: white;
+  background-color: black;
+  border-radius: 50;
+}
+
+/* when hovering mouse over the button */
+.btn:hover {
+  transform: scale(0.97);
+}
+
+
+/* Drawing (changes colouring and sizing of hangman drawing) */
 #drawing {
   fill: none;
   stroke: black;
