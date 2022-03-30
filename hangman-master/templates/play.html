@@ -3,19 +3,37 @@
 {% block content %}
   <svg width="250" height="230" id="drawing">
     <!-- Structure -->
-    <line y1="220" y2="220" x1="10" x2="120" />
-    <line y1="10" y2="220" x1="65" x2="65" />
+    <line y1="220" y2="220" x1="0" x2="250" />
+    <line y1="210" y2="210" x1="65" x2="175" />
+    <line y1="10" y2="210" x1="65" x2="65" />
     <line y1="10" y2="10" x1="65" x2="175" />
     <line y1="10" y2="40" x1="175" x2="175" />
+    <line y1="210" y2="220" x1="65" x2="65" />
+    <line y1="210" y2="220" x1="175" x2="175" />
+    <line y1="180" y2="210" x1="65" x2="95" />
+    <line y1="40" y2="10" x1="65" x2="95" />
+
 
     <!-- Hangman -->
     <g id="hangman-drawing">
-      <circle cx="175" cy="55" r="15" />
+      <circle cx="175" cy="55" r="15" stroke="black" fill="#C896D2" />
+      <circle cx="175" cy="55" r="15"/>
       <ellipse cx="175" cy="115" rx="20" ry="45" />
       <line y1="150" y2="190" x1="162" x2="140" />
       <line y1="150" y2="190" x1="188" x2="210" />
-      <line y1="80" y2="40" x1="162" x2="140" />
-      <line y1="80" y2="40" x1="188" x2="210" />
+      <line y1="80" y2="120" x1="162" x2="140" />
+      <line y1="80" y2="120" x1="188" x2="210"/>
+      
+      <!--X's for when dead-->
+      <line y1="51" y2="57" x1="172" x2="166"/>
+      <line y1="57" y2="51" x1="172" x2="166"/>
+
+      <line y1="51" y2="57" x1="184" x2="178"/>
+      <line y1="57" y2="51" x1="184" x2="178"/>
+
+
+
+
     </g>
   </svg>
 
@@ -29,7 +47,7 @@
       {% endfor %}
     </h1>
     <h3>
-      {% if game.won %} You won! {% else %} You lost :-( {% endif %}
+      {% if game.won %} You won! <span>&#129395;</span> {% else %} You lost <span>&#128546;</span> {% endif %}
     </h3>
     <p>
       <a class="btn btn-default" href="{{ url_for('home') }}">Home</a>
