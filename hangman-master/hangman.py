@@ -2,6 +2,7 @@ import random
 import time
 import flask
 from flask_sqlalchemy import SQLAlchemy
+import pygame
 
 app = flask.Flask(__name__)
 
@@ -116,6 +117,13 @@ class Game(db.Model):
     @property
     def finished(self):
         return self.won or self.lost
+    
+# Music
+def playmusic():
+    filepath = r"/home/elec1005/ELEC1005_hangman-main/AC／DC - Back In Black.mp3"
+    pygame.mixer.init()
+    pygame.mixer.music.load(filepath)
+    pygame.mixer.music.play()
 
 
 # Controller
@@ -153,6 +161,7 @@ def play(game_id):
 # Main
 
 if __name__ == '__main__':
+    playmusic()
     app.debug = True
     app.run(host='127.0.0.1') #remember to modify the host, port and debug mode. 
 
