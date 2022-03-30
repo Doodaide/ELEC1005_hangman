@@ -27,7 +27,7 @@ selection = random.randint(0,1)
 
 #initial greeting message
 
-print("Hello User")
+print("\nHello User")
 time.sleep(1)
 print("I hope you are well.")
 time.sleep(1)
@@ -51,37 +51,20 @@ for cat in categories:
 print()
 category = input("Choice: ").lower().strip() #added choice mesage 
 
-#if the category is a valid category in the list, print a selected message, then proceed
-if category in categories:
-    print(messages[selection])
-
-#If the user selects random, the code will select a random category of the 5, then print a message saying 
-#Looks like we'll use <category name> today, and another message before the game starts
-elif category == "random":
-    random_index = random.randint(0,4)
-    category = categories[random_index] 
-    print(f"Looks like we'll use {categories[random_index]} today")
-    print(messages[selection])
-
 #This block of code will loop the "ask user for selection" menu 
 #until the user enters in a proper category
 while category not in categories:
-    print()
-    print("Please choose a legit category:")
-    print()
-    for cat in categories:
-        print("-", cat.capitalize(),end='\n')
-
-    print()
-    category = input("Choice: ").lower().strip()
-    if category in categories:
-        print(messages[selection])
     if category == "random":
         random_index = random.randint(0,4)
         category = categories[random_index] 
         print(f"Looks like we'll use {categories[random_index]} today")
-        print(messages[selection])
-
+        break
+    print("\nPlease choose a legit category:\n")
+    for cat in categories:
+        print("-", cat.capitalize(),end='\n')
+    print()
+    category = input("Choice: ").lower().strip()
+print(messages[selection],'\n')
 
 word_file = category+".txt"
 
@@ -171,5 +154,5 @@ def play(game_id):
 # Main
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=8910, debug=False) #remember to modify the host, port and debug mode. 
+    app.run(host='0.0.0.0',port=random.randint(8000,10000), debug=False) #remember to modify the host, port and debug mode. 
 
