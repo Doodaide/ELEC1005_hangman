@@ -24,7 +24,7 @@ categories = ["food","animals","pop-culture", "pokemon", "countries"] #added the
 messages = ["A wise choice for a foolish soul", "Can't say I'm an expert, but I'll let you do the talking", "Wow, daring today aren't we",\
 "if ony you were that confident with your other life choices", "I'll drink to that"]
 
-selection = random.randint(0,1) 
+selection = random.randint(1,6)-2 
 
 #initial greeting message
 
@@ -65,7 +65,7 @@ while category not in categories:
         print("-", cat.capitalize(),end='\n')
     print()
     category = input("Choice: ").lower().strip()
-print(messages[selection],'\n')
+print('\n',messages[selection],'\n')
 
 word_file = category+".txt"
 
