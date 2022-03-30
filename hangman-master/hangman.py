@@ -65,7 +65,7 @@ while category not in categories:
         print("-", cat.capitalize(),end='\n')
     print()
     category = input("Choice: ").lower().strip()
-print('\n',messages[selection],'\n')
+print('\n'+messages[selection]+'\n')
 
 word_file = category+".txt"
 
@@ -73,7 +73,7 @@ def random_pk():
     return random.randint(1e9, 1e10)
 
 def random_word():
-    words = [line.strip() for line in open(word_file) if len(line) > 10]
+    words = [line.strip() for line in open("words/"+word_file) if len(line) > 10]
     return random.choice(words).upper()
 
 class Game(db.Model):
@@ -162,6 +162,5 @@ def play(game_id):
 
 if __name__ == '__main__':
     playmusic()
-    app.debug = True
-    app.run(host='127.0.0.1') #remember to modify the host, port and debug mode. 
+    app.run(host='127.0.0.1',port=random.randint(8000,10000),debug=False) #remember to modify the host, port and debug mode. 
 
