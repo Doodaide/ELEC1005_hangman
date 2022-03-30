@@ -44,11 +44,20 @@ th {
 
 
 /* Drawing (changes colouring and sizing of hangman drawing) */
+#drawing #hanging_rope {
+  fill: none;
+  stroke: #B05800;
+  stroke-width: 3;
+  stroke-linecap: round;
+  z-index: -1;
+}
+
 #drawing {
   fill: none;
   stroke: black;
   stroke-width: 3;
   stroke-linecap: round;
+
 }
 
 #hangman-drawing > * {
