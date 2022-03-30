@@ -16,20 +16,46 @@
 
     <!-- Hangman -->
     <g id="hangman-drawing">
-      <circle cx="175" cy="55" r="15" stroke="black" fill="#C896D2" />
-      <circle cx="175" cy="55" r="15"/>
-      <ellipse cx="175" cy="115" rx="20" ry="45" />
-      <line y1="150" y2="190" x1="162" x2="140" />
-      <line y1="150" y2="190" x1="188" x2="210" />
-      <line y1="80" y2="120" x1="162" x2="140" />
-      <line y1="80" y2="120" x1="188" x2="210"/>
-      
-      <!--X's for when dead-->
-      <line y1="51" y2="57" x1="172" x2="166"/>
-      <line y1="57" y2="51" x1="172" x2="166"/>
 
-      <line y1="51" y2="57" x1="184" x2="178"/>
-      <line y1="57" y2="51" x1="184" x2="178"/>
+      <!-- When win vs lost drawing -->
+      {% if game.finished%}
+        {% if game.won %}
+          <circle cx="175" cy="55" r="15"/>
+          <line y1="51" y2="57" x1="172" x2="166"/>
+          <line y1="57" y2="51" x1="172" x2="166"/>
+
+          <line y1="51" y2="57" x1="184" x2="178"/>
+          <line y1="57" y2="51" x1="184" x2="178"/>
+
+        {% else %} <!-- if they die -->
+
+          
+          <circle id="dead_head" cx="190" cy="70" r="15" stroke="black" fill="#C896D2" />
+          <line id="hanging_rope" y1="10" y2="70" x1="175" x2="175"/>
+
+          <line y1="70" y2="76" x1="187" x2="181"/>
+          <line y1="76" y2="70" x1="187" x2="181"/>
+
+          <line y1="70" y2="76" x1="199" x2="193"/>
+          <line y1="76" y2="70" x1="199" x2="193"/>
+
+          <line y1="70" y2="150" x1="175" x2="175"/>
+          <line y1="150" y2="190" x1="162" x2="140" />
+          <line y1="150" y2="190" x1="188" x2="210" />
+          <line y1="80" y2="120" x1="162" x2="140" />
+          <line y1="80" y2="120" x1="188" x2="210"/>
+
+        {% endif %}
+      {% else %}
+        <circle cx="175" cy="55" r="15"/>
+        <ellipse cx="175" cy="115" rx="20" ry="45" />
+        <line y1="150" y2="190" x1="162" x2="140" />
+        <line y1="150" y2="190" x1="188" x2="210" />
+        <line y1="80" y2="120" x1="162" x2="140" />
+        <line y1="80" y2="120" x1="188" x2="210"/>
+      {% endif %}
+
+
 
 
 
@@ -47,7 +73,7 @@
       {% endfor %}
     </h1>
     <h3>
-      {% if game.won %} You won! <span>&#129395;</span> {% else %} You lost <span>&#128546;</span> {% endif %}
+      {% if game.won %} You won! <span>&#129395;</span> {% else %} You lost <span>&#128128;</span> {% endif %}
     </h3>
     <p>
       <a class="btn btn-default" href="{{ url_for('home') }}">Home</a>
