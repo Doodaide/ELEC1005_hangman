@@ -34,5 +34,10 @@ $('#letter-form').submit(function(e) {
 });
 
 function updateDrawing(errors) {
-  $('#hangman-drawing').children().slice(0, errors.length).show();
+  if (errors.length < 6) {
+    $('#hangman-drawing').children().slice(1, errors.length).show();
+  } else if (errors.length = 6) {
+    $('#hangman-drawing').children().slice(0, errors.length + 5).show();
+  }
+
 }
