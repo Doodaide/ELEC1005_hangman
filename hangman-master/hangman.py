@@ -144,7 +144,6 @@ def play(game_id):
         if len(letter) == 1 and letter.isalpha():
             game.try_letter(letter)
 
-    if flask.request.is_xhr:
         return flask.jsonify(current=game.current,
                              errors=game.errors,
                              finished=game.finished)
@@ -154,5 +153,6 @@ def play(game_id):
 # Main
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=random.randint(8000,10000), debug=False) #remember to modify the host, port and debug mode. 
+    app.debug = True
+    app.run(host='127.0.0.1') #remember to modify the host, port and debug mode. 
 
