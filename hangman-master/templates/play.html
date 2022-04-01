@@ -4,15 +4,15 @@
   <svg width="250" height="230" id="drawing">
     <!-- Structure -->
     <line y1="220" y2="220" x1="0" x2="250" />
-    <line y1="210" y2="210" x1="65" x2="175" />
+    <line y1="210" y2="210" x1="40" x2="200" />
     <line y1="10" y2="210" x1="65" x2="65" />
     <line y1="10" y2="10" x1="65" x2="175" />
-    <line y1="10" y2="40" x1="175" x2="175" />
-    <line y1="210" y2="220" x1="65" x2="65" />
-    <line y1="210" y2="220" x1="175" x2="175" />
+    <line id="hanging_rope" y1="10" y2="40" x1="175" x2="175" />
+    <line y1="210" y2="220" x1="40" x2="40" />
+    <line y1="210" y2="220" x1="200" x2="200" />
     <line y1="180" y2="210" x1="65" x2="95" />
     <line y1="40" y2="10" x1="65" x2="95" />
-
+    <rect x="40" y="210" width="160" height="10" fill="black"/>
 
     <!-- Hangman -->
     <g id="hangman-drawing">
@@ -20,17 +20,41 @@
       <!-- When win vs lost drawing -->
       {% if game.finished%}
         {% if game.won %}
-          <circle cx="175" cy="55" r="15"/>
-          <line y1="51" y2="57" x1="172" x2="166"/>
-          <line y1="57" y2="51" x1="172" x2="166"/>
 
-          <line y1="51" y2="57" x1="184" x2="178"/>
-          <line y1="57" y2="51" x1="184" x2="178"/>
+          <!-- make celabratory face -->
+          <circle cx="175" cy="75" r="15"/>
+
+          <!-- mouth -->
+          <path d="M 168 80 C 172 85, 178 85, 182 80" stroke="black" fill="transparent"/>
+
+          <!-- eyes -->
+          <circle cx="170" cy="72" r="3" stroke="black" fill="#00ff00"/>
+          <circle cx="180" cy="72" r="3" stroke="black" fill="#00ff00"/>
+          
+          <line y1="90" y2="170" x1="175" x2="175"/>
+
+          <line y1="170" y2="210" x1="175" x2="157" />
+          <line y1="170" y2="210" x1="175" x2="198" />
+
+          <line y1="110" y2="85" x1="175" x2="155" />
+          <line y1="110" y2="85" x1="175" x2="195"/>
+            
+
 
         {% else %} <!-- if they die -->
+        <!-- buffer lines to satisfy all possible game outcomes -->
+          <line y1="40" y2="10" x1="65" x2="95" />
+          <line y1="40" y2="10" x1="65" x2="95" />
+          <line y1="40" y2="10" x1="65" x2="95" />
+          <line y1="40" y2="10" x1="65" x2="95" />
+          <line y1="40" y2="10" x1="65" x2="95" />
+          <line y1="40" y2="10" x1="65" x2="95" />
+          <line y1="40" y2="10" x1="65" x2="95" />
+          <line y1="40" y2="10" x1="65" x2="95" />
+          <line y1="40" y2="10" x1="65" x2="95" />
 
-          
-          <circle id="dead_head" cx="190" cy="70" r="15" stroke="black" fill="#C896D2" />
+          <!-- head -->
+          <circle id="dead_head" cx="190" cy="70" r="15" stroke="black" fill="#C896D2"/>
           <line id="hanging_rope" y1="10" y2="70" x1="175" x2="175"/>
 
           <line y1="70" y2="76" x1="187" x2="181"/>
@@ -39,27 +63,47 @@
           <line y1="70" y2="76" x1="199" x2="193"/>
           <line y1="76" y2="70" x1="199" x2="193"/>
 
+          <!-- body -->
           <line y1="70" y2="150" x1="175" x2="175"/>
-          <line y1="150" y2="190" x1="162" x2="140" />
-          <line y1="150" y2="190" x1="188" x2="210" />
-          <line y1="80" y2="120" x1="162" x2="140" />
-          <line y1="80" y2="120" x1="188" x2="210"/>
+
+          <line y1="150" y2="190" x1="175" x2="157" />
+          <line y1="150" y2="190" x1="175" x2="193" />
+
+          <line y1="80" y2="120" x1="175" x2="157" />
+          <line y1="80" y2="120" x1="175" x2="193"/>
 
         {% endif %}
+
       {% else %}
+      <!-- buffer lines to satisfy all game outcomes -->
+        <line y1="40" y2="10" x1="65" x2="95" />
+        <line y1="40" y2="10" x1="65" x2="95" />
+        <line y1="40" y2="10" x1="65" x2="95" />
+        <line y1="40" y2="10" x1="65" x2="95" />
+        <line y1="40" y2="10" x1="65" x2="95" />
+        <line y1="40" y2="10" x1="65" x2="95" />
+        <line y1="40" y2="10" x1="65" x2="95" />
+        <line y1="40" y2="10" x1="65" x2="95" />
+        <line y1="40" y2="10" x1="65" x2="95" />
+
         <circle cx="175" cy="55" r="15"/>
-        <ellipse cx="175" cy="115" rx="20" ry="45" />
-        <line y1="150" y2="190" x1="162" x2="140" />
-        <line y1="150" y2="190" x1="188" x2="210" />
-        <line y1="80" y2="120" x1="162" x2="140" />
-        <line y1="80" y2="120" x1="188" x2="210"/>
+
+        <!-- mouth -->
+        <path d="M 168 62 C 172 60, 178 60, 182 62" stroke="black" fill="transparent"/>
+
+        <!-- eyes -->
+        <circle cx="170" cy="52" r="3" stroke="black" fill="#00ff00"/>
+        <circle cx="180" cy="52" r="3" stroke="black" fill="#00ff00"/>
+        
+        <line y1="70" y2="150" x1="175" x2="175"/>
+
+        <line y1="150" y2="190" x1="175" x2="157" />
+        <line y1="150" y2="190" x1="175" x2="193" />
+
+        <line y1="80" y2="120" x1="175" x2="157" />
+        <line y1="80" y2="120" x1="175" x2="193"/>
+      
       {% endif %}
-
-
-
-
-
-
     </g>
   </svg>
 
