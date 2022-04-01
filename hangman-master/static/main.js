@@ -34,10 +34,16 @@ $('#letter-form').submit(function(e) {
 });
 
 function updateDrawing(errors) {
-  if (errors.length < 6) {
-    $('#hangman-drawing').children().slice(1, errors.length).show();
-  } else if (errors.length = 6) {
-    $('#hangman-drawing').children().slice(0, errors.length + 5).show();
-  }
+  $('#hangman-drawing').children().slice(0,9).show();
 
+  if (errors.length == 1) {
+    $('#hangman-drawing').children().slice(9,13).show();
+
+  } else if (errors.length == 6) {
+    $('#hangman-drawing').children().slice(0, errors.length + 14).show();
+
+  } else {
+    $('#hangman-drawing').children().slice(12, errors.length + 12).show();
+  }
 }
+
