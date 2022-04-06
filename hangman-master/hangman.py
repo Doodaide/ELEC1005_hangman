@@ -23,7 +23,7 @@ categories = ["food","animals","pop-culture", "pokemon", "countries"] #added the
 #If this is changed, we must change the selection range.
 
 messages = ["A wise choice for a foolish soul", "Can't say I'm an expert, but I'll let you do the talking", "Wow, daring today aren't we",\
-"if ony you were that confident with your other life choices", "I'll drink to that"]
+"if only you were that confident with your other life choices", "I'll drink to that"]
 
 selection = random.randint(1,6)-2 
 
