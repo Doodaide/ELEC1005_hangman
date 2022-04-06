@@ -70,7 +70,7 @@ print('\n'+messages[selection]+'\n')
 word_file = category+".txt"
 
 #difficulty selection
-difficulty = input("Difficulty[easy/hard/medium]").lower()
+difficulty = input("Difficulty[easy/hard/medium] ").lower()
 while difficulty != "easy" and difficulty != "medium" and difficulty != "hard":
     print("please choose the difficulty listed!")
     print()
