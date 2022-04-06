@@ -130,7 +130,7 @@ class Game(db.Model):
         return self.won or self.lost
     
 # Music
-def playmusic():
+def playmusic(-1):
     filepath = "Back_In_Black.mp3"
     pygame.mixer.init()
     pygame.mixer.music.load(filepath)
