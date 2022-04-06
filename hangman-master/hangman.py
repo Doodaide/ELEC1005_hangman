@@ -1,3 +1,4 @@
+#!/Library/Frameworks/Python.framework/Versions/3.10/bin/python3
 import random
 import time
 import flask
@@ -67,25 +68,23 @@ while category not in categories:
     category = input("Choice: ").lower().strip()
 print('\n'+messages[selection]+'\n')
 
-word_file = category+".txt"
+word_file = "words/"+category+".txt"
 
 #difficulty selection
-difficulty = input("Difficulty[easy/hard/medium] ").lower()
-while difficulty != "easy" and difficulty != "medium" and difficulty != "hard":
+difficulty = input("Difficulty[easy/hard").lower()
+while difficulty != "easy" and difficulty != "hard":
     print("please choose the difficulty listed!")
     print()
-    difficulty = input("Difficulty[easy/hard/medium]: ").lower().strip()
+    difficulty = input("Difficulty[easy/hard]: ").lower().strip()
 
 def random_pk():
     return random.randint(1e9, 1e10)
 
 def random_word():
     if difficulty == "easy":
-        words = [line.strip() for line in open(word_file) if (len(line) > 0 and len(line) <= 5)]
-    elif difficulty == "medium":
-        words = [line.strip() for line in open(word_file) if (len(line) > 5 and len(line) <= 10)]
+        words = [line.strip() for line in open(word_file) if len(line) < 6 ]
     elif difficulty == "hard":
-        words = [line.strip() for line in open(word_file) if len(line) > 10]
+        words = [line.strip() for line in open(word_file) if len(line) > 5]
     return random.choice(words).upper()
 
 class Game(db.Model):
@@ -174,5 +173,4 @@ def play(game_id):
 
 if __name__ == '__main__':
     playmusic()
-    app.run(host='127.0.0.1',port=random.randint(8000,10000),debug=False) #remember to modify the host, port and debug mode. 
-
+    app.run(host='127.0.0.1',port=random.randint(8000,10000),debug=False) #remember to modify the host, port and debug mode.
