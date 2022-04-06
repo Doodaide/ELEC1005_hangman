@@ -69,11 +69,23 @@ print('\n'+messages[selection]+'\n')
 
 word_file = category+".txt"
 
+#difficulty selection
+difficulty = input("Difficulty[easy/hard/medium]").lower()
+while difficulty != "easy" and difficulty != "medium" and difficulty != "hard":
+    print("please choose the difficulty listed!")
+    print()
+    difficulty = input("Difficulty[easy/hard/medium]: ").lower().strip()
+
 def random_pk():
     return random.randint(1e9, 1e10)
 
 def random_word():
-    words = [line.strip() for line in open("words/"+word_file) if len(line) > 10]
+    if difficulty == "easy":
+        words = [line.strip() for line in open(word_file) if (len(line) > 0 and len(line) <= 5)]
+    elif difficulty == "medium":
+        words = [line.strip() for line in open(word_file) if (len(line) > 5 and len(line) <= 10)]
+    elif difficulty == "hard":
+        words = [line.strip() for line in open(word_file) if len(line) > 10]
     return random.choice(words).upper()
 
 class Game(db.Model):
