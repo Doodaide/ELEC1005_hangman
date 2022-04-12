@@ -7,7 +7,11 @@ body {
 }
 
 .btn.btn-primary.btn-lg {
-  height:45px;
+  height: 45px;
+}
+
+.btn.btn-hint.btn-lg {
+  height: 45px;
 }
 
 th {
@@ -30,17 +34,34 @@ th {
 
 /* styling of buttons */
 .btn.btn-primary,
-.btn.btn-default {
+.btn.btn-default,
+.btn.btn-hint.btn-lg {
   font-family: 'Cabin', sans-serif;
   color: white;
   background-color: black;
   border-radius: 50;
+  border: none;
+  outline: none;
+}
+
+.btn.btn-defaultt {
+  display: none;
 }
 
 /* when hovering mouse over the button */
 .btn:hover {
   transform: scale(0.97);
 }
+
+.btn.btn-hint.btn-lg[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: 0%;
+  left: 110%;
+  color: black;
+}
+
+
 
 
 /* Drawing (changes colouring and sizing of hangman drawing) */
