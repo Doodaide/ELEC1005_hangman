@@ -114,6 +114,20 @@ class Game(db.Model):
         if not self.finished and letter not in self.tried:
             self.tried += letter
             db.session.commit()
+            
+    def hint_letter(self):
+        hint_list = ["1","2","3","4","5","6"]
+        while not self.finished:
+            splitapart = list(self.word)
+            randomletter = random.choice(splitapart)
+            if randomletter not in self.tried:
+                self.tried += randomletter
+                for i in hint_list:
+                    if i not in self.tried:
+                        self.tried += i
+                        break
+                db.session.commit()
+                break
 
     # Game status
 
@@ -154,14 +168,18 @@ def new_game():
     db.session.commit()
     return flask.redirect(flask.url_for('play', game_id=game.pk))
 
+
 @app.route('/play/<game_id>', methods=['GET', 'POST'])
 def play(game_id):
     game = Game.query.get_or_404(game_id)
 
     if flask.request.method == 'POST':
         letter = flask.request.form['letter'].upper()
-        if len(letter) == 1 and letter.isalpha():
+        if len(letter) == 1 and (letter.isalpha()):
             game.try_letter(letter)
+            
+        elif len(letter) == 0:
+            game.hint_letter()
 
         return flask.jsonify(current=game.current,
                              errors=game.errors,
